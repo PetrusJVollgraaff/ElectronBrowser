@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';" />
+<title>Browser</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header id="titlebar">
+    <div id="tab-row">
+      <div id="tabs-container" role="tablist" aria-label="Open tabs"></div>
+      <button id="new-tab-btn" title="New tab" aria-label="New tab">+</button>
+      <div id="drag-spacer"></div>
+      <div id="window-controls">
+        <button id="min-btn" title="Minimize" aria-label="Minimize">&#xE921;<span class="glyph">&#9472;</span></button>
+        <button id="max-btn" title="Maximize" aria-label="Maximize"><span class="glyph">&#9633;</span></button>
+        <button id="close-btn" title="Close" aria-label="Close"><span class="glyph">&#10005;</span></button>
+      </div>
+    </div>
+
+    <div id="nav-row">
+      <div id="nav-buttons">
+        <button id="back-btn" title="Back" aria-label="Back">&#8592;</button>
+        <button id="forward-btn" title="Forward" aria-label="Forward">&#8594;</button>
+        <button id="reload-btn" title="Reload" aria-label="Reload">&#8635;</button>
+      </div>
+      <form id="address-form" autocomplete="off">
+        <span id="address-icon">&#128269;</span>
+        <input id="address-bar" type="text" placeholder="Search Google or type a URL" spellcheck="false" />
+      </form>
+    </div>
+  </header>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

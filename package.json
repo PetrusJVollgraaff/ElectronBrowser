@@ -1,0 +1,12 @@
+{
+  "name": "electron-browser",
+  "version": "1.0.0",
+  "description": "A minimal Chrome-style browser built with Electron: frameless window, tabs in the title bar, and a search/address bar instead of a File/Edit/View/Window menu.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^44.4.3"
+  }
+}

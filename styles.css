@@ -1,0 +1,214 @@
+:root {
+  --bg-chrome: #202124;
+  --bg-tab-active: #35363b;
+  --bg-tab-hover: #2b2c30;
+  --border: #303134;
+  --text: #e8e6e3;
+  --text-muted: #9aa0a6;
+  --accent: #4fa6a0;
+  --danger: #e05a4f;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg-chrome);
+  color: var(--text);
+  font-family: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+  font-size: 13px;
+  overflow: hidden;
+  user-select: none;
+}
+
+#titlebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  -webkit-app-region: drag;
+}
+
+/* ---------- Tab row ---------- */
+
+#tab-row {
+  display: flex;
+  align-items: flex-end;
+  height: 36px;
+  padding: 6px 8px 0 8px;
+  gap: 4px;
+}
+
+#tabs-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-app-region: no-drag;
+  max-width: 70%;
+}
+#tabs-container::-webkit-scrollbar { display: none; }
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  min-width: 120px;
+  max-width: 200px;
+  padding: 0 8px 0 10px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+.tab:hover { background: var(--bg-tab-hover); }
+.tab.active {
+  background: var(--bg-tab-active);
+  color: var(--text);
+}
+.tab.active::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.tab-favicon {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tab-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12.5px;
+}
+
+.tab-close {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+.tab-close:hover { background: rgba(255, 255, 255, 0.12); }
+
+#new-tab-btn {
+  -webkit-app-region: no-drag;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 2px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+#new-tab-btn:hover { background: var(--bg-tab-hover); color: var(--text); }
+
+#drag-spacer { flex: 1; }
+
+#window-controls {
+  -webkit-app-region: no-drag;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 2px;
+}
+#window-controls button {
+  width: 40px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#window-controls button:hover { background: var(--bg-tab-hover); color: var(--text); }
+#close-btn:hover { background: var(--danger) !important; color: #fff !important; }
+.glyph { font-size: 11px; }
+
+/* ---------- Nav / search row (replaces File / Edit / View / Window) ---------- */
+
+#nav-row {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 10px;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-chrome);
+}
+
+#nav-buttons {
+  -webkit-app-region: no-drag;
+  display: flex;
+  gap: 2px;
+}
+#nav-buttons button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#nav-buttons button:hover { background: var(--bg-tab-hover); }
+#nav-buttons button:disabled { color: var(--text-muted); opacity: 0.4; cursor: default; }
+
+#address-form {
+  -webkit-app-region: no-drag;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 16px;
+  background: #131315;
+  border: 1px solid var(--border);
+}
+#address-form:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+#address-icon { font-size: 12px; opacity: 0.7; }
+
+#address-bar {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 13px;
+}
+#address-bar::placeholder { color: var(--text-muted); }
